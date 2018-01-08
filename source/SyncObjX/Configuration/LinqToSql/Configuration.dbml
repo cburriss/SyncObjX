@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TTIntegration" Class="ConfigurationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=CHRISXPS17;Initial Catalog=TTIntegration;Integrated Security=True" SettingsObjectName="SyncObjX.Properties.Settings" SettingsPropertyName="TTIntegrationConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Integration" Member="Integrations">
+    <Type Name="Integration">
+      <Column Name="IntegrationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PackageDllDirectory" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="PackageDllFilename" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SourceName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TargetName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MaxConcurrentThreads" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoggingLevelId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="LogToDatabase" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DaysOfDatabaseLoggingHistory" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LogToFile" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DaysOfFileLoggingHistory" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Integration_Job" Member="Jobs" ThisKey="IntegrationId" OtherKey="IntegrationId" Type="Job" />
+      <Association Name="LoggingLevel_Integration" Member="LoggingLevel" ThisKey="LoggingLevelId" OtherKey="LoggingLevelId" Type="LoggingLevel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobPriority" Member="JobPriorities">
+    <Type Name="JobPriority">
+      <Column Name="JobPriorityId" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MaxDelayedStartInSeconds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="JobPriority_Job" Member="Jobs" ThisKey="JobPriorityId" OtherKey="JobPriorityId" Type="Job" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobStep" Member="JobSteps">
+    <Type Name="JobStep">
+      <Column Name="JobStepId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FullyQualifiedName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderIndex" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IsEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Job_JobStep" Member="Job" ThisKey="JobId" OtherKey="JobId" Type="Job" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceConfig" Member="ServiceConfigs">
+    <Type Name="ServiceConfig">
+      <Column Name="PropertyKey" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyValue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoggingLevel" Member="LoggingLevels">
+    <Type Name="LoggingLevel">
+      <Column Name="LoggingLevelId" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="LoggingLevel_Integration" Member="Integrations" ThisKey="LoggingLevelId" OtherKey="LoggingLevelId" Type="Integration" />
+      <Association Name="LoggingLevel_Job" Member="Jobs" ThisKey="LoggingLevelId" OtherKey="LoggingLevelId" Type="Job" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExtendedProperty" Member="ExtendedProperties">
+    <Type Name="ExtendedProperty">
+      <Column Name="ExtendedPropertyId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SyncObjectTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="SyncObjectId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="SyncObjectType_ExtendedProperty" Member="SyncObjectType" ThisKey="SyncObjectTypeId" OtherKey="SyncObjectTypeId" Type="SyncObjectType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job" Member="Jobs">
+    <Type Name="Job">
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IntegrationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="JobPriorityId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TerminateOnErrorTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="LoggingLevelId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="Job_JobStep" Member="JobSteps" ThisKey="JobId" OtherKey="JobId" Type="JobStep" />
+      <Association Name="Job_JobSchedule" Member="JobSchedules" ThisKey="JobId" OtherKey="JobId" Type="JobSchedule" />
+      <Association Name="Job_JobDataSource" Member="JobDataSources" ThisKey="JobId" OtherKey="JobId" Type="JobDataSource" />
+      <Association Name="Integration_Job" Member="Integration" ThisKey="IntegrationId" OtherKey="IntegrationId" Type="Integration" IsForeignKey="true" />
+      <Association Name="JobPriority_Job" Member="JobPriority" ThisKey="JobPriorityId" OtherKey="JobPriorityId" Type="JobPriority" IsForeignKey="true" />
+      <Association Name="LoggingLevel_Job" Member="LoggingLevel" ThisKey="LoggingLevelId" OtherKey="LoggingLevelId" Type="LoggingLevel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobSchedule" Member="JobSchedules">
+    <Type Name="JobSchedule">
+      <Column Name="JobScheduleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DaysOfWeek" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="EndTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="FrequencyInSeconds" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Job_JobSchedule" Member="Job" ThisKey="JobId" OtherKey="JobId" Type="Job" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobDataSource" Member="JobDataSources">
+    <Type Name="JobDataSource">
+      <Column Name="JobDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SyncSide" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Association Name="Job_JobDataSource" Member="Job" ThisKey="JobId" OtherKey="JobId" Type="Job" IsForeignKey="true" />
+      <Association Name="DataSource_JobDataSource" Member="DataSource" ThisKey="DataSourceId" OtherKey="DataSourceId" Type="DataSource" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DataSource" Member="DataSources">
+    <Type Name="DataSource">
+      <Column Name="DataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AdapterId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="DataSource_JobDataSource" Member="JobDataSources" ThisKey="DataSourceId" OtherKey="DataSourceId" Type="JobDataSource" />
+      <Association Name="Adapter_DataSource" Member="Adapter" ThisKey="AdapterId" OtherKey="AdapterId" Type="Adapter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Adapter" Member="Adapters">
+    <Type Name="Adapter">
+      <Column Name="AdapterId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DllDirectory" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="DllFilename" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="FullyQualifiedName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="Adapter_DataSource" Member="DataSources" ThisKey="AdapterId" OtherKey="AdapterId" Type="DataSource" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SyncObjectType" Member="SyncObjectTypes">
+    <Type Name="SyncObjectType">
+      <Column Name="SyncObjectTypeId" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="SyncObjectType_ExtendedProperty" Member="ExtendedProperties" ThisKey="SyncObjectTypeId" OtherKey="SyncObjectTypeId" Type="ExtendedProperty" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobDataSourceHistory" Member="JobDataSourceHistories">
+    <Type Name="JobDataSourceHistory">
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SourceDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TargetDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastQueueRequestId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastJobInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastStartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastEndTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastStartTimeWithoutRecordErrors" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastEndTimeWithoutRecordErrors" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastStartTimeWithoutRuntimeErrors" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastEndTimeWithoutRuntimeErrors" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

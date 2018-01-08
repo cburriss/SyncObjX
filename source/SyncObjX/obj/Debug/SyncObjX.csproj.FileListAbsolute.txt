@@ -1,0 +1,7 @@
+C:\Program Files\SyncObjX\SyncObjX.dll.config
+C:\Program Files\SyncObjX\SyncObjX.dll
+C:\Program Files\SyncObjX\SyncObjX.pdb
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\SyncObjX\obj\Debug\SyncObjX.csproj.CoreCompileInputs.cache
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\SyncObjX\obj\Debug\SyncObjX.dll
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\SyncObjX\obj\Debug\SyncObjX.pdb
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\SyncObjX\obj\Debug\SyncObjX.csprojResolveAssemblyReference.cache

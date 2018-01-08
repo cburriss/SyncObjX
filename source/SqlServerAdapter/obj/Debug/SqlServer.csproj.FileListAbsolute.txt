@@ -1,0 +1,6 @@
+C:\Program Files\SyncObjX\SyncObjX.Adapters.SqlServer.dll
+C:\Program Files\SyncObjX\SyncObjX.Adapters.SqlServer.pdb
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\SqlServerAdapter\obj\Debug\SqlServer.csprojResolveAssemblyReference.cache
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\SqlServerAdapter\obj\Debug\SqlServer.csproj.CoreCompileInputs.cache
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\SqlServerAdapter\obj\Debug\SyncObjX.Adapters.SqlServer.dll
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\SqlServerAdapter\obj\Debug\SyncObjX.Adapters.SqlServer.pdb

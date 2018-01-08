@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 17.125, 12.25" name="Logging">
+  <DataContextMoniker Name="/LoggingDataContext" />
+  <nestedChildShapes>
+    <classShape Id="176e9be0-3adf-4d41-af12-89a1852a40a1" absoluteBounds="6.25, 1.5, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/LoggingDataContext/JobStepQueue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bd620eef-3008-42b3-b4e8-3bf2ff99c662" absoluteBounds="6.265, 1.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1d848ae6-a875-4bfd-abfb-57c0f3796987" absoluteBounds="3, 10.625, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/LoggingDataContext/JobStepQueueStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b215c57d-9a7d-4741-9d03-e77793acc169" absoluteBounds="3.015, 11.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="da6c5fb3-b2b8-4551-aeba-124273f58e7f" absoluteBounds="6.75, 7, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/LoggingDataContext/LogEntryType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="647075f2-b1fd-4ef0-a885-424f042cdfd5" absoluteBounds="6.765, 7.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="063f9ded-ead1-4f18-9e8d-2ab13a39e9dc" absoluteBounds="6.75, 10.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/LoggingDataContext/LoggingLevel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7ecfb5e1-6e24-4bc3-8eae-5726b22bc79e" absoluteBounds="6.765, 11.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5 : 11.5184549036458); (6.5 : 11.5184549036458); (6.5 : 4.4151025390625); (7.25 : 4.4151025390625); (7.25 : 4.0401025390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LoggingDataContext/JobStepQueueStatus/JobStepQueueStatus_JobStepQueue" />
+      <nodes>
+        <classShapeMoniker Id="1d848ae6-a875-4bfd-abfb-57c0f3796987" />
+        <classShapeMoniker Id="176e9be0-3adf-4d41-af12-89a1852a40a1" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="69eb5f8e-9c7d-45fa-bb5d-317c0587c294" absoluteBounds="12.125, 1, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/LoggingDataContext/EntityBatchRecordHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ebab96b5-5af2-4cee-9ea1-7f866725ec12" absoluteBounds="12.14, 1.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="67541f78-0911-411d-8482-b7dbf78f2185" absoluteBounds="14.875, 1, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/LoggingDataContext/EntityBatchRecordHistoryDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56fa27d6-d01f-4d31-84a5-47e337a46aad" absoluteBounds="14.89, 1.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5d6c8b22-bb4b-4863-ae02-750853e48003" absoluteBounds="9.5, 6.375, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/LoggingDataContext/LogEntry" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a0534a05-dbb0-4cba-a6d8-0b3eb1040e49" absoluteBounds="9.515, 6.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.125 : 2.07774983723958); (14.875 : 2.07774983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/EntityBatchRecordHistory/EntityBatchRecordHistory_EntityBatchRecordHistoryDetail" />
+      <nodes>
+        <classShapeMoniker Id="69eb5f8e-9c7d-45fa-bb5d-317c0587c294" />
+        <classShapeMoniker Id="67541f78-0911-411d-8482-b7dbf78f2185" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 7.59699625651042); (9.5 : 7.59699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/LogEntryType/LogEntryType_LogEntry" />
+      <nodes>
+        <classShapeMoniker Id="da6c5fb3-b2b8-4551-aeba-124273f58e7f" />
+        <classShapeMoniker Id="5d6c8b22-bb4b-4863-ae02-750853e48003" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="43ac14a3-5eb2-4e26-973d-db75b55a4aab" absoluteBounds="9.5, 1, 2, 2.5401025390625">
+      <DataClassMoniker Name="/LoggingDataContext/EntityBatchHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a7becd55-b079-4e4f-a3de-1bdfd41b205c" absoluteBounds="9.515, 1.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.5 : 2.07774983723958); (12.125 : 2.07774983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/EntityBatchHistory/EntityBatchHistory_EntityBatchRecordHistory" />
+      <nodes>
+        <classShapeMoniker Id="43ac14a3-5eb2-4e26-973d-db75b55a4aab" />
+        <classShapeMoniker Id="69eb5f8e-9c7d-45fa-bb5d-317c0587c294" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="65a1d928-1248-4bb4-9eab-1a18cb358e52" absoluteBounds="1, 4.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/LoggingDataContext/JobQueueStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="769d429b-62b8-42a9-9240-1c098764067e" absoluteBounds="1.0150000000000001, 4.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ecfa1b0b-cc7e-4ada-a83a-8b329c9df0d1" absoluteBounds="3.75, 3, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/LoggingDataContext/JobQueue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="316f2939-80fe-4a6d-b97b-2b17cbc663f2" absoluteBounds="3.765, 3.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.75 : 3.52005126953125); (6.25 : 3.52005126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/JobQueue/JobQueue_JobStepQueue" />
+      <nodes>
+        <classShapeMoniker Id="ecfa1b0b-cc7e-4ada-a83a-8b329c9df0d1" />
+        <classShapeMoniker Id="176e9be0-3adf-4d41-af12-89a1852a40a1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3 : 4.94314697265625); (3.75 : 4.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LoggingDataContext/JobQueueStatus/JobQueueStatus_JobQueue" />
+      <nodes>
+        <classShapeMoniker Id="65a1d928-1248-4bb4-9eab-1a18cb358e52" />
+        <classShapeMoniker Id="ecfa1b0b-cc7e-4ada-a83a-8b329c9df0d1" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c0682537-5f9f-4cea-ad23-3df189c17e9f" absoluteBounds="1.25, 0.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/LoggingDataContext/JobDataSourceHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65031d23-0f05-45e9-803f-7889e103de00" absoluteBounds="1.2650000000000001, 0.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eb651f04-84a0-4f5d-9872-da3474cb1eed" absoluteBounds="0.625, 6.5, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/LoggingDataContext/JobStepHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="623aaffd-aa32-4fa3-8adb-e5c77b8c3025" absoluteBounds="0.63999999999999968, 6.9600000000000009, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3 : 10.625); (2.625 : 10.0016097005208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/JobStepQueueStatus/JobStepQueueStatus_JobStepHistory" />
+      <nodes>
+        <classShapeMoniker Id="1d848ae6-a875-4bfd-abfb-57c0f3796987" />
+        <classShapeMoniker Id="eb651f04-84a0-4f5d-9872-da3474cb1eed" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e643233a-c1ed-4a47-970e-32cb7cd1dc20" absoluteBounds="3.875, 6.5, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/LoggingDataContext/JobHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b12d3bf8-7b9f-4b42-ba89-bc18fbb08464" absoluteBounds="3.8899999999999997, 6.96, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.875 : 8.25080485026042); (3.45833333333333 : 8.25080485026042 : JumpStart); (3.29166666666667 : 8.25080485026042 : JumpEnd); (2.625 : 8.25080485026042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LoggingDataContext/JobHistory/JobHistory_JobStepHistory" />
+      <nodes>
+        <classShapeMoniker Id="e643233a-c1ed-4a47-970e-32cb7cd1dc20" />
+        <classShapeMoniker Id="eb651f04-84a0-4f5d-9872-da3474cb1eed" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3 : 5.6362939453125); (3.375 : 6.0112939453125); (3.375 : 9.18790492513021); (3.875 : 9.18790492513021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LoggingDataContext/JobQueueStatus/JobQueueStatus_JobHistory" />
+      <nodes>
+        <classShapeMoniker Id="65a1d928-1248-4bb4-9eab-1a18cb358e52" />
+        <classShapeMoniker Id="e643233a-c1ed-4a47-970e-32cb7cd1dc20" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

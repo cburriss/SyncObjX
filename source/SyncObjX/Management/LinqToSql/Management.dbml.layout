@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 11.75" name="QueueManagement">
+  <DataContextMoniker Name="/QueueManagementDataContext" />
+  <nestedChildShapes>
+    <classShape Id="731acdfb-698d-49e6-a14c-bfc3b11c3afe" absoluteBounds="0.75, 4.5, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/QueueManagementDataContext/JobQueueStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="63ebeab5-8705-4acc-9f32-ee3d474a6da9" absoluteBounds="0.765, 4.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0635c47d-0408-412d-b2ce-37613aa772cf" absoluteBounds="6.25, 1.5, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/QueueManagementDataContext/JobStepQueue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82c2479c-075a-44ce-8bf6-e045bc6302d1" absoluteBounds="6.265, 1.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7e1d6e77-a9bd-4450-905b-a51e7bf7c5a7" absoluteBounds="3.5, 10.125, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/QueueManagementDataContext/JobStepQueueStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66b5c877-848b-41a8-8807-33632ca2785c" absoluteBounds="3.515, 10.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 10.8181469726562); (6.8125 : 10.8181469726562); (6.8125 : 4.0401025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QueueManagementDataContext/JobStepQueueStatus/JobStepQueueStatus_JobStepQueue" />
+      <nodes>
+        <classShapeMoniker Id="7e1d6e77-a9bd-4450-905b-a51e7bf7c5a7" />
+        <classShapeMoniker Id="0635c47d-0408-412d-b2ce-37613aa772cf" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="415d59b7-2a08-4dbf-b690-b97fa17b7a61" absoluteBounds="0.75, 6.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/QueueManagementDataContext/JobQueue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1a711b78-9f37-4a10-9645-ea435f35c6ad" absoluteBounds="0.76500000000000012, 6.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 6.37653746153846); (3.125 : 6.00153746153846); (3.125 : 4.4151025390625); (5.875 : 4.4151025390625); (6.25 : 4.0401025390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QueueManagementDataContext/JobQueue/JobQueue_JobStepQueue" />
+      <nodes>
+        <classShapeMoniker Id="415d59b7-2a08-4dbf-b690-b97fa17b7a61" />
+        <classShapeMoniker Id="0635c47d-0408-412d-b2ce-37613aa772cf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 5.8862939453125); (1.75 : 6.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QueueManagementDataContext/JobQueueStatus/JobQueueStatus_JobQueue" />
+      <nodes>
+        <classShapeMoniker Id="731acdfb-698d-49e6-a14c-bfc3b11c3afe" />
+        <classShapeMoniker Id="415d59b7-2a08-4dbf-b690-b97fa17b7a61" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="fcc16143-525f-459d-b885-672832ef4c08" absoluteBounds="1.75, 0.75, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/QueueManagementDataContext/JobDataSourceHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="add0b7e2-29c7-419e-9495-30ede9a3e2ea" absoluteBounds="1.7649999999999997, 1.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dca30967-4173-4f14-821f-194d407af0d8" absoluteBounds="4.25, 5.25, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/QueueManagementDataContext/JobHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="87607ba4-83eb-4978-97b5-923e35c90e65" absoluteBounds="4.265, 5.71, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 5.56814697265625); (3.76041666666667 : 5.56814697265625 : JumpStart); (3.92708333333333 : 5.56814697265625 : JumpEnd); (4.25 : 5.56814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QueueManagementDataContext/JobQueueStatus/JobQueueStatus_JobHistory" />
+      <nodes>
+        <classShapeMoniker Id="731acdfb-698d-49e6-a14c-bfc3b11c3afe" />
+        <classShapeMoniker Id="dca30967-4173-4f14-821f-194d407af0d8" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="cebcd85c-0f52-42df-ae5b-87b0255cf828" absoluteBounds="7.375, 5, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/QueueManagementDataContext/JobStepHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4229653-cb0b-422a-aabe-34635d9d2b19" absoluteBounds="7.3900000000000006, 5.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.25 : 6.87580485026042); (7.375 : 6.87580485026042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QueueManagementDataContext/JobHistory/JobHistory_JobStepHistory" />
+      <nodes>
+        <classShapeMoniker Id="dca30967-4173-4f14-821f-194d407af0d8" />
+        <classShapeMoniker Id="cebcd85c-0f52-42df-ae5b-87b0255cf828" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.84375 : 10.125); (3.84375 : 5.09375); (7.375 : 5.09375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QueueManagementDataContext/JobStepQueueStatus/JobStepQueueStatus_JobStepHistory" />
+      <nodes>
+        <classShapeMoniker Id="7e1d6e77-a9bd-4450-905b-a51e7bf7c5a7" />
+        <classShapeMoniker Id="cebcd85c-0f52-42df-ae5b-87b0255cf828" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

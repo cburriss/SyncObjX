@@ -1,0 +1,7 @@
+C:\Program Files\SyncObjX\SyncObjX.Adapters.PostgreSQL.dll
+C:\Program Files\SyncObjX\SyncObjX.Adapters.PostgreSQL.pdb
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\PostgreSQL\obj\Debug\PostgreSQL.csprojResolveAssemblyReference.cache
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\PostgreSQL\obj\Debug\PostgreSQL.csproj.CoreCompileInputs.cache
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\PostgreSQL\obj\Debug\SyncObjX.Adapters.PostgreSQL.dll
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\PostgreSQL\obj\Debug\SyncObjX.Adapters.PostgreSQL.pdb
+C:\Program Files\SyncObjX\SyncObjX.Adapters.PostgreSQL.dll.config

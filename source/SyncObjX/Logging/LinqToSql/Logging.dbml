@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SyncObjX" Class="LoggingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=[ComputerName];Initial Catalog=SyncObjX;Integrated Security=True" SettingsObjectName="SyncObjX.Properties.Settings" SettingsPropertyName="SyncObjXConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.JobStepQueue" Member="JobStepQueues">
+    <Type Name="JobStepQueue">
+      <Column Name="JobStepInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="JobInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="JobStepId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrderIndex" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ActualStartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActualEndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JobStepQueueStatusId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="JobStepQueueStatus_JobStepQueue" Member="JobStepQueueStatus" ThisKey="JobStepQueueStatusId" OtherKey="JobStepQueueStatusId" Type="JobStepQueueStatus" IsForeignKey="true" />
+      <Association Name="JobQueue_JobStepQueue" Member="JobQueue" ThisKey="JobInstanceId" OtherKey="JobInstanceId" Type="JobQueue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobStepQueueStatus" Member="JobStepQueueStatus">
+    <Type Name="JobStepQueueStatus">
+      <Column Name="JobStepQueueStatusId" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="JobStepQueueStatus_JobStepQueue" Member="JobStepQueues" ThisKey="JobStepQueueStatusId" OtherKey="JobStepQueueStatusId" Type="JobStepQueue" />
+      <Association Name="JobStepQueueStatus_JobStepHistory" Member="JobStepHistories" ThisKey="JobStepQueueStatusId" OtherKey="JobStepQueueStatusId" Type="JobStepHistory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LogEntryType" Member="LogEntryTypes">
+    <Type Name="LogEntryType">
+      <Column Name="LogEntryTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="LogEntryType_LogEntry" Member="LogEntries" ThisKey="LogEntryTypeId" OtherKey="LogEntryTypeId" Type="LogEntry" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoggingLevel" Member="LoggingLevels">
+    <Type Name="LoggingLevel">
+      <Column Name="LoggingLevelId" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntityBatchRecordHistory" Member="EntityBatchRecordHistories">
+    <Type Name="EntityBatchRecordHistory">
+      <Column Name="EntityBatchRecordHistoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntityBatchHistoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Action" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="EntityKeyValues" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="HasError" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="EntityBatchRecordHistory_EntityBatchRecordHistoryDetail" Member="EntityBatchRecordHistoryDetail" ThisKey="EntityBatchRecordHistoryId" OtherKey="EntityBatchRecordHistoryDetailId" Type="EntityBatchRecordHistoryDetail" Cardinality="One" />
+      <Association Name="EntityBatchHistory_EntityBatchRecordHistory" Member="EntityBatchHistory" ThisKey="EntityBatchHistoryId" OtherKey="EntityBatchHistoryId" Type="EntityBatchHistory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntityBatchRecordHistoryDetail" Member="EntityBatchRecordHistoryDetails">
+    <Type Name="EntityBatchRecordHistoryDetail">
+      <Column Name="EntityBatchRecordHistoryDetailId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntityBatchRecordHistoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FieldName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="FieldCaption" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="OldValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NewValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="EntityBatchRecordHistory_EntityBatchRecordHistoryDetail" Member="EntityBatchRecordHistory" ThisKey="EntityBatchRecordHistoryDetailId" OtherKey="EntityBatchRecordHistoryId" Type="EntityBatchRecordHistory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LogEntry" Member="LogEntries">
+    <Type Name="LogEntry">
+      <Column Name="LogEntryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntegrationId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DataSourceId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="JobInstanceId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="JobStepInstanceId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="LogEntryTypeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="LogEntryType_LogEntry" Member="LogEntryType" ThisKey="LogEntryTypeId" OtherKey="LogEntryTypeId" Type="LogEntryType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntityBatchHistory" Member="EntityBatchHistories">
+    <Type Name="EntityBatchHistory">
+      <Column Name="EntityBatchHistoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntegrationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="JobInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="JobStepInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SyncSide" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EntityName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EntityKeyFields" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="EntityBatchHistory_EntityBatchRecordHistory" Member="EntityBatchRecordHistories" ThisKey="EntityBatchHistoryId" OtherKey="EntityBatchHistoryId" Type="EntityBatchRecordHistory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobQueueStatus" Member="JobQueueStatus">
+    <Type Name="JobQueueStatus">
+      <Column Name="JobQueueStatusId" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="JobQueueStatus_JobQueue" Member="JobQueues" ThisKey="JobQueueStatusId" OtherKey="JobQueueStatusId" Type="JobQueue" />
+      <Association Name="JobQueueStatus_JobHistory" Member="JobHistories" ThisKey="JobQueueStatusId" OtherKey="JobQueueStatusId" Type="JobHistory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobQueue" Member="JobQueues">
+    <Type Name="JobQueue">
+      <Column Name="JobInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QueueRequestId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Filters" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SourceDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TargetDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="InvocationSource" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ScheduledStartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ActualStartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsOnDemand" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="JobQueueStatusId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="JobQueue_JobStepQueue" Member="JobStepQueues" ThisKey="JobInstanceId" OtherKey="JobInstanceId" Type="JobStepQueue" />
+      <Association Name="JobQueueStatus_JobQueue" Member="JobQueueStatus" ThisKey="JobQueueStatusId" OtherKey="JobQueueStatusId" Type="JobQueueStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobDataSourceHistory" Member="JobDataSourceHistories">
+    <Type Name="JobDataSourceHistory">
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SourceDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TargetDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastQueueRequestId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastJobInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastStartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastEndTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastStartTimeWithoutRecordErrors" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastEndTimeWithoutRecordErrors" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastStartTimeWithoutRuntimeErrors" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastEndTimeWithoutRuntimeErrors" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobStepHistory" Member="JobStepHistories">
+    <Type Name="JobStepHistory">
+      <Column Name="JobStepHistoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="JobStepInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="JobInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="JobHistoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JobStepId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrderIndex" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ActualStartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActualEndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActualDuration" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="JobStepQueueStatusId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="HasRecordErrors" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasRuntimeErrors" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="JobStepQueueStatus_JobStepHistory" Member="JobStepQueueStatus" ThisKey="JobStepQueueStatusId" OtherKey="JobStepQueueStatusId" Type="JobStepQueueStatus" IsForeignKey="true" />
+      <Association Name="JobHistory_JobStepHistory" Member="JobHistory" ThisKey="JobHistoryId" OtherKey="JobHistoryId" Type="JobHistory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobHistory" Member="JobHistories">
+    <Type Name="JobHistory">
+      <Column Name="JobHistoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="JobInstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="QueueRequestId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SourceDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TargetDataSourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Filters" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InvocationSource" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ScheduledStartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ActualStartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TimeToStartDelay" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="ActualEndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActualDuration" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="IsOnDemand" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="JobQueueStatusId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="HasRecordErrors" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasRuntimeErrors" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="JobHistory_JobStepHistory" Member="JobStepHistories" ThisKey="JobHistoryId" OtherKey="JobHistoryId" Type="JobStepHistory" />
+      <Association Name="JobQueueStatus_JobHistory" Member="JobQueueStatus" ThisKey="JobQueueStatusId" OtherKey="JobQueueStatusId" Type="JobQueueStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.DeleteAllHistory" Method="DeleteAllHistory">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteServiceHistory" Method="DeleteServiceHistory">
+    <Parameter Name="DaysToKeep" Parameter="daysToKeep" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteIntegrationHistory" Method="DeleteIntegrationHistory">
+    <Parameter Name="IntegrationId" Parameter="integrationId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="DaysToKeep" Parameter="daysToKeep" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteJobDataSourceHistory" Method="DeleteJobDataSourceHistory">
+    <Parameter Name="JobId" Parameter="jobId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddEntityBatchRecordHistoryDetail" Method="AddEntityBatchRecordHistoryDetail">
+    <Parameter Name="EntityBatchRecordHistoryId" Parameter="entityBatchRecordHistoryId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FieldName" Parameter="fieldName" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="FieldCaption" Parameter="fieldCaption" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="OldValue" Parameter="oldValue" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="NewValue" Parameter="newValue" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddEntityBatchRecordHistory" Method="AddEntityBatchRecordHistory">
+    <Parameter Name="EntityBatchHistoryId" Parameter="entityBatchHistoryId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Action" Parameter="action" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="EntityKeyValues" Parameter="entityKeyValues" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="HasError" Parameter="hasError" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ErrorMessage" Parameter="errorMessage" Type="System.String" DbType="NVarChar(1000)" />
+    <ElementType Name="AddEntityBatchRecordHistoryResult">
+      <Column Name="InsertedID" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AddLogEntry" Method="AddLogEntry">
+    <Parameter Name="IntegrationId" Parameter="integrationId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="DataSourceId" Parameter="dataSourceId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="JobInstanceId" Parameter="jobInstanceId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="JobStepInstanceId" Parameter="jobStepInstanceId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="LogEntryTypeId" Parameter="logEntryTypeId" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="Message" Parameter="message" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddEntityBatchHistory" Method="AddEntityBatchHistory">
+    <Parameter Name="IntegrationId" Parameter="integrationId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="JobInstanceId" Parameter="jobInstanceId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="JobStepInstanceId" Parameter="jobStepInstanceId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="DataSourceId" Parameter="dataSourceId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="SyncSide" Parameter="syncSide" Type="System.String" DbType="Char(6)" />
+    <Parameter Name="TechnicalEntityName" Parameter="technicalEntityName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="UserFriendlyEntityName" Parameter="userFriendlyEntityName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="EntityKeyFields" Parameter="entityKeyFields" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="AddEntityBatchHistoryResult">
+      <Column Name="InsertedID" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

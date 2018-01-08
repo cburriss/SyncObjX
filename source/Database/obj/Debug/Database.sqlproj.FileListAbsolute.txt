@@ -1,0 +1,9 @@
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\bin\Debug\Database.dacpac
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\bin\Debug\AZIntegrationDatabase.dll
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\bin\Debug\AZIntegrationDatabase.pdb
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\obj\Debug\AZIntegrationDatabase.dll
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\obj\Debug\AZIntegrationDatabase.pdb
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\obj\Debug\Model.xml
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\obj\Debug\refactor.xml
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\obj\Debug\postdeploy.sql
+C:\Users\chris\Downloads\SyncObjX\SyncObjX\Database\obj\Debug\predeploy.sql

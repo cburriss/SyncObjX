@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{146E383A-1E88-42EE-A2E9-E7D0C0FC98B9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SyncObjX</RootNamespace>
+    <AssemblyName>SyncObjX</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\..\..\..\Program Files\SyncObjX\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\AdapterInstance.cs" />
+    <Compile Include="Adapters\IAdapterDataService.cs" />
+    <Compile Include="Collections\Generic\FixedSizeDictionary.cs" />
+    <Compile Include="Collections\Generic\FixedSizeDictionaryArgs.cs" />
+    <Compile Include="Collections\Generic\FixedSizeQueue.cs" />
+    <Compile Include="Collections\Generic\FixedSizeQueueArgs.cs" />
+    <Compile Include="Configuration\AssociatedRecordsExistException.cs" />
+    <Compile Include="Configuration\ISyncEngineConfigurator.cs" />
+    <Compile Include="Configuration\LinqToSql\Configuration.designer.cs">
+      <DependentUpon>Configuration.dbml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Configuration\RecordNotFoundException.cs" />
+    <Compile Include="Configuration\SupportedPropertyOption.cs" />
+    <Compile Include="Configuration\SyncEngineDatabaseConfigurator.cs" />
+    <Compile Include="Core\DataMap.cs" />
+    <Compile Include="Core\DataMapFieldType.cs" />
+    <Compile Include="Core\DuplicateRowBehavior.cs" />
+    <Compile Include="Core\IOneWayDataMap.cs" />
+    <Compile Include="Core\JoinType.cs" />
+    <Compile Include="Core\OneToManyDataMapProcessor.cs" />
+    <Compile Include="Core\OneToMany_OneWayDataMap.cs" />
+    <Compile Include="Data\DataFilter.cs" />
+    <Compile Include="Data\DataFilterHelper.cs" />
+    <Compile Include="Data\DataFilterOperator.cs" />
+    <Compile Include="Data\TransposeDataOnlyField.cs" />
+    <Compile Include="Core\TransposeResult.cs" />
+    <Compile Include="Core\TransposeResult_AddRecord.cs" />
+    <Compile Include="Core\TransposeResult_DeleteRecord.cs" />
+    <Compile Include="Core\TransposeResult_UpdateRecord.cs" />
+    <Compile Include="Core\UnmappedValueException.cs" />
+    <Compile Include="Core\UnmappedValueExceptionHandler.cs" />
+    <Compile Include="Data\AutoBindingForeignKey.cs" />
+    <Compile Include="Data\DataOnlyField.cs" />
+    <Compile Include="Data\DataOnlyFieldWithValue.cs" />
+    <Compile Include="Data\EntityBatchRelationship.cs" />
+    <Compile Include="Data\RecordKeyType.cs" />
+    <Compile Include="Data\PrimaryKeyGenerationType.cs" />
+    <Compile Include="Core\SyncSideToUpdate.cs" />
+    <Compile Include="Core\TwoWayDataMap.cs" />
+    <Compile Include="Core\CheckboxState.cs" />
+    <Compile Include="Core\ComparisonResult.cs" />
+    <Compile Include="Adapters\IAdapterConfig.cs" />
+    <Compile Include="Adapters\IAdapter.cs" />
+    <Compile Include="Core\CustomSetField.cs" />
+    <Compile Include="Core\DataTransferType.cs" />
+    <Compile Include="Data\EntityRecordWithDataChange.cs" />
+    <Compile Include="Data\RecordKeyCombo.cs" />
+    <Compile Include="Data\RecordKeyComboComparer.cs" />
+    <Compile Include="Data\EntityRecordWithoutChange.cs" />
+    <Compile Include="Exceptions\DerivedClassNotImplementedException.cs" />
+    <Compile Include="Exceptions\EnumValueNotImplementedException.cs" />
+    <Compile Include="Logging\EntityBatchLoggingBehavior.cs" />
+    <Compile Include="Logging\LogHelper.cs" />
+    <Compile Include="Logging\Mail\MailConfigException.cs" />
+    <Compile Include="Logging\Mail\MailException.cs" />
+    <Compile Include="Logging\Mail\MailFormatter.cs" />
+    <Compile Include="Logging\Mail\MailSendException.cs" />
+    <Compile Include="Logging\Mail\MailNotifier.cs" />
+    <Compile Include="Logging\Mail\MailConfig.cs" />
+    <Compile Include="Management\CustomActionStep.cs" />
+    <Compile Include="Management\DataMapStepOutput.cs" />
+    <Compile Include="Core\StepInfoSyncDirection.cs" />
+    <Compile Include="Core\SyncOperation.cs" />
+    <Compile Include="Core\OneWayDataMap.cs" />
+    <Compile Include="Management\EntityBatchStep.cs" />
+    <Compile Include="Management\EntityBatchStepOutput.cs" />
+    <Compile Include="Management\JobBatchStep.cs" />
+    <Compile Include="Management\JobBatchStepOutput.cs" />
+    <Compile Include="Data\EntityRecord.cs" />
+    <Compile Include="Logging\ISyncEngineLogManagement.cs" />
+    <Compile Include="Logging\ISyncEngineLogWriter.cs" />
+    <Compile Include="Logging\MidnightNotifier.cs" />
+    <Compile Include="Management\JobFilter.cs" />
+    <Compile Include="Management\JobFilterHelper.cs" />
+    <Compile Include="Management\JobFilterOperator.cs" />
+    <Compile Include="Management\JobInstanceResult.cs" />
+    <Compile Include="Management\JobStepInstanceResult.cs" />
+    <Compile Include="Management\JobQueueRequestResult.cs" />
+    <Compile Include="Management\JobQueueResult.cs" />
+    <Compile Include="Management\RunHistory.cs" />
+    <Compile Include="Management\SafeJobStopException.cs" />
+    <Compile Include="Management\WebServiceException.cs" />
+    <Compile Include="Migration\SelfContainedMigrator.cs" />
+    <Compile Include="SyncObjects\JobDataSource.cs" />
+    <Compile Include="Logging\DatabaseLogger.cs" />
+    <Compile Include="Logging\EventViewerLogger.cs" />
+    <Compile Include="Logging\ExceptionFormatter.cs" />
+    <Compile Include="Logging\ISyncEngineLogger.cs" />
+    <Compile Include="Logging\LinqToSql\Logging.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logging.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\LogEntryType.cs" />
+    <Compile Include="Logging\SyncEngineLogger.cs" />
+    <Compile Include="Logging\TextFileLogger.cs" />
+    <Compile Include="Management\ConcurrentThreadState.cs" />
+    <Compile Include="Management\ConcurrentThreadUsageChangedArgs.cs" />
+    <Compile Include="Management\IJobQueueManagement.cs" />
+    <Compile Include="Management\IJobQueueManagementLogger.cs" />
+    <Compile Include="Management\JobDequeuedArgs.cs" />
+    <Compile Include="Management\JobDequeuedEventHandler.cs" />
+    <Compile Include="Management\JobQueuedArgs.cs" />
+    <Compile Include="Management\JobQueueDatabaseLogger.cs" />
+    <Compile Include="Management\JobQueuedEventHandler.cs" />
+    <Compile Include="Management\JobQueueLogManager.cs" />
+    <Compile Include="Management\JobQueueManagerStatus.cs" />
+    <Compile Include="Management\JobQueueRequestStatus.cs" />
+    <Compile Include="Management\JobQueueRequestStatusChangedArgs.cs" />
+    <Compile Include="Management\JobQueueStatusChangedArgs.cs" />
+    <Compile Include="Management\JobQueueRequest.cs" />
+    <Compile Include="Management\ScheduledJobManager.cs" />
+    <Compile Include="Management\JobInstance.cs" />
+    <Compile Include="Management\JobStepInstance.cs" />
+    <Compile Include="Management\LinqToSql\Management.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Management.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\JobQueueManager.cs" />
+    <Compile Include="Management\JobInvocationType.cs" />
+    <Compile Include="Management\JobQueueStatus.cs" />
+    <Compile Include="Management\JobStepInvocation.cs" />
+    <Compile Include="Management\JobStepQueueStatus.cs" />
+    <Compile Include="Management\JobStepQueueStatusChangedArgs.cs" />
+    <Compile Include="Management\JobQueueManagerStatusChangedArgs.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\LoggingLevel.cs" />
+    <Compile Include="Service\ServiceConfig.cs" />
+    <Compile Include="Service\ServiceConfigProperty.cs" />
+    <Compile Include="SyncObjects\Adapter.cs" />
+    <Compile Include="SyncObjects\AdapterDefinition.cs" />
+    <Compile Include="Adapters\AdapterInfo.cs" />
+    <Compile Include="Configuration\SupportedProperty.cs" />
+    <Compile Include="Configuration\SupportedPropertyType.cs" />
+    <Compile Include="SyncObjects\DataSource.cs" />
+    <Compile Include="SyncObjects\DataSourceDefinition.cs" />
+    <Compile Include="SyncObjects\IntegrationDefinition.cs" />
+    <Compile Include="SyncObjects\JobDefinition.cs" />
+    <Compile Include="Management\JobInvoker.cs" />
+    <Compile Include="Management\JobPriority.cs" />
+    <Compile Include="SyncObjects\JobStepDefinition.cs" />
+    <Compile Include="Management\JobStepInvoker.cs" />
+    <Compile Include="Management\JobTerminateOnErrorType.cs" />
+    <Compile Include="Core\OneToOneDataMap.cs" />
+    <Compile Include="Core\StepInfo.cs" />
+    <Compile Include="SyncObjects\JobSchedule.cs" />
+    <Compile Include="SyncObjects\SyncObject.cs" />
+    <Compile Include="SyncObjects\SyncObjectType.cs" />
+    <Compile Include="SyncObjects\JobStep.cs" />
+    <Compile Include="Management\DataMapStep.cs" />
+    <Compile Include="Core\TwoWayFieldMap.cs" />
+    <Compile Include="Core\FieldMap.cs" />
+    <Compile Include="Data\EntityToUpdateDefinition.cs" />
+    <Compile Include="Core\CompareType.cs" />
+    <Compile Include="Core\CompareAs.cs" />
+    <Compile Include="Core\ConflictResolutionResult.cs" />
+    <Compile Include="Core\DataTableHelper.cs" />
+    <Compile Include="Data\EntityBatch.cs" />
+    <Compile Include="Core\FieldComparer.cs" />
+    <Compile Include="Core\SyncSide.cs" />
+    <Compile Include="Core\OneWayFieldMap.cs" />
+    <Compile Include="Core\FieldMapPair.cs" />
+    <Compile Include="Core\JoinFieldPair.cs" />
+    <Compile Include="Core\JoinFieldCollection.cs" />
+    <Compile Include="Data\SqlInsertFactory.cs" />
+    <Compile Include="Data\SqlUpdateFactory.cs" />
+    <Compile Include="Core\CompareField.cs" />
+    <Compile Include="Core\OneToOneDataMapProcessor.cs" />
+    <Compile Include="Core\UnmappedValueBehavior.cs" />
+    <Compile Include="Data\UpdateValueSet.cs" />
+    <Compile Include="SyncObjects\Integration.cs" />
+    <Compile Include="Data\RecordToAdd.cs" />
+    <Compile Include="Data\RecordToDelete.cs" />
+    <Compile Include="Data\RecordToUpdate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\SyncDirection.cs" />
+    <Compile Include="SyncObjects\Job.cs" />
+    <Compile Include="Data\JobBatch.cs" />
+    <Compile Include="Util\ErrorHelper.cs" />
+    <Compile Include="Util\StringHelper.cs" />
+    <Compile Include="Util\WebServiceExceptionFormatter.cs" />
+    <Compile Include="Web\HtmlBuilder.cs" />
+    <Compile Include="Web\UrlBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Configuration\LinqToSql\Configuration.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Configuration.designer.cs</LastGenOutput>
+      <CustomToolNamespace>SyncObjX.Configuration.LinqToSql</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Logging\LinqToSql\Logging.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Logging.designer.cs</LastGenOutput>
+      <CustomToolNamespace>SyncObjX.Logging.LinqToSql</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Management\LinqToSql\Management.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Management.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>SyncObjX.Management.LinqToSql</CustomToolNamespace>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Management\LinqToSql\Management.dbml.layout">
+      <DependentUpon>Management.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configuration\LinqToSql\Configuration.dbml.layout">
+      <DependentUpon>Configuration.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Logging\LinqToSql\Logging.dbml.layout">
+      <DependentUpon>Logging.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
